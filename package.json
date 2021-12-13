@@ -1,0 +1,44 @@
+{
+  "name": "typesense-vue-instanstantsearch-demo",
+  "version": "1.0.3",
+  "private": true,
+  "scripts": {
+    "start": "vue-cli-service serve --port 3000",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lint:fix": "npm run lint -- --fix",
+    "typesenseServer": "docker run -i -p 8108:8108 -v/tmp/typesense-server-data-1c/:/data typesense/typesense:0.20.0 --data-dir /data --api-key=xyz --listen-port 8108 --enable-cors",
+    "populateTypesenseIndex": "node populateTypesenseIndex.js",
+    "populateExperts": "node populate_experts.js",
+    "deploy:demo": "npm version patch; vue-cli-service build --mode staging; aws s3 cp ./dist/ s3://typesense-vue2-demo/ --recursive"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.1.3",
+    "core-js": "2.6.9",
+    "router": "^1.3.5",
+    "typesense-instantsearch-adapter": "^1.2.2",
+    "vue": "2.6.14",
+    "vue-instantsearch": "3.7.0",
+    "webpackbar": "^5.0.0-3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "3.6.0",
+    "@vue/cli-plugin-eslint": "3.6.0",
+    "@vue/cli-service": "3.6.0",
+    "babel-eslint": "10.0.2",
+    "eslint": "5.16.0",
+    "eslint-config-algolia": "13.2.3",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-vue": "5.2.2",
+    "prettier": "1.19.1",
+    "vue-template-compiler": "2.6.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
